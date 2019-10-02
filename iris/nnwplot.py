@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from matplotlib import colors
 
 
-def plotTwoFeatures(X,T,pred_func):
+def plotTwoFeatures(X,T,pred_func,W = None, threshold = None):
     if X.ndim!=2:
         raise ValueError('X be a matrix (2 dimensional array).')
 #    if X.shape[0]!=2: 
@@ -25,9 +25,9 @@ def plotTwoFeatures(X,T,pred_func):
 
     # evaluate model on the dense grid
     try:
-        Z = pred_func(np.c_[xs.flatten(), ys.flatten()].T);
+        Z = pred_func(np.c_[xs.flatten(), ys.flatten()].T, W = W, threshold = threshold);
     except:
-        Z = pred_func(np.c_[xs.flatten(), ys.flatten()]);
+        Z = pred_func(np.c_[xs.flatten(), ys.flatten()], W = W, threshold = threshold);
         
     if Z.ndim>1 and Z.shape[0]>1: # onehot? -> convert
         Z=Z.argmax(0)
