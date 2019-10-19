@@ -3,7 +3,7 @@ services:
   notebook:
     build: 
       context: .github/actions/
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     entrypoint: jupyter notebook
     ports: 
       - 8888:8888
