@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Execute Workbooks
-        uses: ./.github/actions/jupytext-execute
+        uses: ./.github/actions/juyptext-execute
         with:
           notebookFiles: '*.Rmd'
       - run: ls
