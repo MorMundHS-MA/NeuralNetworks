@@ -1,0 +1,21 @@
+name: Execute Workbooks
+on:
+  push:
+    branches:
+      - master
+jobs:
+  execute:
+    name: Execute
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Execute Workbooks # Could use the dockerfile, but that would require an additional custom action
+        uses: docker://jupyter/scipy-notebook:latest
+        with:
+          entrypoint: /bin/bash
+          args: >
+            -c "pip install jupytext
+            && echo 'c.NotebookApp.contents_manager_class=\"jupytext.TextFileContentsManager\"' >> .jupyter/jupyter_notebook_config.py
+            && echo 'c.ContentsManager.default_jupytext_formats = \".ipynb,.Rmd\"' >> .jupyter/jupyter_notebook_config.py
+            && jupyter nbconvert --execute *.Rmd"
+      - run: ls
