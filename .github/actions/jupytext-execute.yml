@@ -1,0 +1,12 @@
+name: Execute jupytext
+description: Executes jupytext files to generate full jupyter notebook files
+author: MorMund
+inputs:
+  notebookFiles:
+    description: The files to execute
+    default: '*.Rmd'
+runs:
+  using: docker
+  image: dockerfile
+  args:
+    - ${{ inputs.myInput }}
