@@ -2,9 +2,9 @@ version: "3.7"
 services: 
   notebook:
     build: 
-      context: .github/actions/
+      context: .github/actions/jupytext-execute
       dockerfile: Dockerfile
-    entrypoint: jupyter notebook
+    command: notebook
     ports: 
       - 8888:8888
     volumes: 

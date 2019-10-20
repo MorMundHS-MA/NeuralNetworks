@@ -12,5 +12,5 @@ jobs:
       - name: Execute Workbooks
         uses: ./.github/actions/jupytext-execute
         with:
-          notebookFiles: '*.Rmd'
+          notebookFiles: 'workbooks/*.Rmd'
       - run: ls
